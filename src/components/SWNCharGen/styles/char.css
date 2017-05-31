@@ -1,0 +1,19 @@
+body, div, input {
+    font: 11px Verdana;
+}
+
+div.charDesign {
+    margin-bottom: 20px;
+}
+
+.charDesign div span {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+
+.charSheet div span {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
