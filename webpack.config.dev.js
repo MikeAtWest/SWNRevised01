@@ -8,11 +8,11 @@ export default {
   entry: {
     'index': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/index.tsx')],
     'swnCharGen': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/SWNCharGen/demoPage/swnCharGenPage')],
-    'hello': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/helloWorld/helloPage')],
-    'news': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/news/newsPage')],
-    'staffDirectorySearch': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/staffDirectorySearch/demoPage/staffDirectorySearchPage')],
-    'paginator': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/common/paginator/demoPage/paginatorPage')],
-    'multiple': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/multiple/multiplePage')]
+    // 'hello': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/helloWorld/helloPage')],
+    // 'news': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/news/newsPage')],
+    // 'staffDirectorySearch': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/staffDirectorySearch/demoPage/staffDirectorySearchPage')],
+    // 'paginator': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/common/paginator/demoPage/paginatorPage')],
+    // 'multiple': ['react-hot-loader/patch', 'webpack-hot-middleware/client?reload=true', path.resolve(__dirname, 'src/components/multiple/multiplePage')]
   },
 
   target: 'web',

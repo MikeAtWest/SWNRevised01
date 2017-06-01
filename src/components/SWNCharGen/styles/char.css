@@ -34,9 +34,8 @@ div.charDesign {
     margin-bottom: 5px;
 }
 
-.charSheet div span {
+.charSheet div span.labelWidth {
     display: inline-block;
     width: 100px;
-    font-weight: bold;
 }
 

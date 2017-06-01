@@ -8,8 +8,18 @@ export interface IAttributesListProps {
 export const AttributeList = (props: IAttributesListProps) => {
 
     const attributeItems: JSX.Element[] = [];
+    let count = 0;
     for (const attr of props.attributes) {
-        attributeItems.push(<div key={attr.index}><span>{attr.name}</span>{attr.finalScore}</div>);
+        attributeItems.push(
+            <span key={attr.index}>
+                <b>{attr.name}&nbsp;{attr.finalScore}&nbsp;</b>
+                <span>({attr.modifierStr})</span>
+                {count < props.attributes.length - 1 &&
+                    <span>,&nbsp;</span>
+                }
+            </span>,
+        );
+        count++;
     }
 
     return (

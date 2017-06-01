@@ -57,9 +57,10 @@ export default {
   devtool: 'source-map',
   entry: {
     index: path.resolve(__dirname, 'src/index'),
-    hello: path.resolve(__dirname, 'src/components/helloWorld/helloPage'),
-    news: path.resolve(__dirname, 'src/components/news/newsPage'),
-    staffDirectorySearch: path.resolve(__dirname, 'src/components/staffDirectorySearch/demoPage/staffDirectorySearchPage'),
+    swnCharGen: path.resolve(__dirname, 'src/components/SWNCharGen/demoPage/swnCharGenPage'),
+    // hello: path.resolve(__dirname, 'src/components/helloWorld/helloPage'),
+    // news: path.resolve(__dirname, 'src/components/news/newsPage'),
+    // staffDirectorySearch: path.resolve(__dirname, 'src/components/staffDirectorySearch/demoPage/staffDirectorySearchPage'),
     vendor: ['jquery', 'react', 'react-dom', 'toastr']
   },
   target: 'web',
@@ -112,30 +113,6 @@ export default {
       //trackJSToken: 'f761fe0028f6444b860f401015de3d0c'
     }),
 
-    // Create HTML file that includes reference to bundled JS. For hello.html.
-    new HtmlWebpackPlugin({
-      template: 'src/components/helloWorld/helloPage.html',
-      filename: 'helloPage.html',
-      minify: htmlMinificationSettings,
-      chunksSortMode: function (chunk1, chunk2) {
-        return sortChunks(['vendor', 'hello'], chunk1, chunk2);
-      },
-      chunks: ['vendor', 'hello'],
-      inject: true
-    }),
-
-    // Create HTML file that includes reference to bundled JS. For news.html.
-    new HtmlWebpackPlugin({
-      template: 'src/components/news/newsPage.html',
-      filename: 'newsPage.html',
-      minify: htmlMinificationSettings,
-      chunksSortMode: function (chunk1, chunk2) {
-        return sortChunks(['vendor', 'news'], chunk1, chunk2);
-      },
-      chunks: ['vendor', 'news'],
-      inject: true
-    }),
-
     // Create HTML file that includes reference to bundled JS. For staffDirectorySearch.html.
     new HtmlWebpackPlugin({
       template: 'src/components/staffDirectorySearch/demoPage/staffDirectorySearchPage.html',
@@ -148,63 +125,20 @@ export default {
       inject: true
     }),
 
-    // Create HTML file that includes reference to bundled JS. For multiple.html.
+    // Create HTML file that includes reference to bundled JS. For staffDirectorySearch.html.
     new HtmlWebpackPlugin({
-      template: 'src/components/multiple/multiplePage.html',
-      filename: 'multiplePage.html',
+      template: 'src/components/SWNCharGen/demoPage/swnCharGenPage',
+      filename: 'swnCharGenPage.html',
       minify: htmlMinificationSettings,
       chunksSortMode: function (chunk1, chunk2) {
-        return sortChunks(['vendor', 'news', 'hello', 'staffDirectorySearch'], chunk1, chunk2);
+        return sortChunks(['vendor', 'swnCharGen'], chunk1, chunk2);
       },
-      chunks: ['vendor', 'news', 'hello', 'staffDirectorySearch'],
+      chunks: ['vendor', 'swnCharGen'],
       inject: true
     }),
 
     // Minify js
     new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
-
-    // Create JSON files that ONLY includes references to the resources requried by each component. Used by CMS when requesting reources for the portlet.
-
-    new HtmlWebpackProcessingPlugin(),
-
-    new HtmlWebpackPlugin({
-      template: 'src/blank_template.html',
-      filename: 'news_resources.json',
-      chunksSortMode: function (chunk1, chunk2) {
-        return sortChunks(['vendor', 'news'], chunk1, chunk2);
-      },
-      chunks: ['vendor', 'news'],
-      inject: 'head',
-      postProcessing: originalHTML => {
-        return transformLinksToJSON(originalHTML);
-      }
-    }),
-
-    new HtmlWebpackPlugin({
-      template: 'src/blank_template.html',
-      filename: 'hello_resources.json',
-      chunksSortMode: function (chunk1, chunk2) {
-        return sortChunks(['vendor', 'hello'], chunk1, chunk2);
-      },
-      chunks: ['vendor', 'hello'],
-      inject: 'head',
-      postProcessing: originalHTML => {
-        return transformLinksToJSON(originalHTML);
-      }
-    }),
-
-    new HtmlWebpackPlugin({
-      template: 'src/blank_template.html',
-      filename: 'staffDirectorySearch_resources.json',
-      chunksSortMode: function (chunk1, chunk2) {
-        return sortChunks(['vendor', 'staffDirectorySearch'], chunk1, chunk2);
-      },
-      chunks: ['vendor', 'staffDirectorySearch'],
-      inject: 'head',
-      postProcessing: originalHTML => {
-        return transformLinksToJSON(originalHTML);
-      }
-    })
 
   ],
   module: {
