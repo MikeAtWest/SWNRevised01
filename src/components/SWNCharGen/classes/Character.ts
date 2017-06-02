@@ -12,7 +12,7 @@ export class Character implements ICharacter {
     public attributeMethod: string;
 
     constructor() {
-        this.name = "";
+        this.name = "Character Name";
         this.attributeMethod = "random";
         this.attributes.push(new Attribute(0, "Strength", 10));
         this.attributes.push(new Attribute(1, "Dexterity", 10));

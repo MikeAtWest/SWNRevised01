@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Character, ICharacter } from "./classes/Character";
 
+import { PickFromArray } from "./PickFromArray";
 import { RandomRoll } from "./RandomRoll";
 
 export interface ICharDesignProps {
@@ -9,6 +10,7 @@ export interface ICharDesignProps {
     onChangeAttributeMethod: (event: any) => any;
     onRollForAttributes: (event: any) => any;
     onSetAttributeTo14: (event: any) => any;
+    onSetAttribute: (event: any) => any;
 }
 
 export const CharDesign = (props: ICharDesignProps) => {
@@ -32,7 +34,10 @@ export const CharDesign = (props: ICharDesignProps) => {
             }
 
             {props.char.attributeMethod === "picked" &&
-                <div>Picked</div>
+                <PickFromArray
+                    char={props.char}
+                    onSetAttribute={props.onSetAttribute}
+                />
             }
         </div>
     );

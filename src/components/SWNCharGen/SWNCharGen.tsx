@@ -65,6 +65,19 @@ export default class SWNCharGen extends React.Component<ISWNCharGenProps, ISWNCh
         this.setState({ char });
     }
 
+    public onSetAttribute(e): void {
+        const attributeIndex = e.target.dataset.count;
+        const attributeScore = e.target.value;
+        const attributes = this.state.char.attributes;
+        for (const attr of attributes) {
+            attr.setTo14 = false;
+        }
+        attributes[attributeIndex].baseScore = attributeScore;
+        const char = this.state.char;
+        char.attributes = attributes;
+        this.setState({ char });
+    }
+
     public render() {
         return (
             <div>
@@ -76,6 +89,7 @@ export default class SWNCharGen extends React.Component<ISWNCharGenProps, ISWNCh
                     onChangeAttributeMethod={this.onChangeAttributeMethod}
                     onRollForAttributes={this.onRollForAttributes}
                     onSetAttributeTo14={this.onSetAttributeTo14}
+                    onSetAttribute={this.onSetAttribute}
                 />
 
                 <CharSheet char={this.state.char} />
@@ -90,6 +104,7 @@ export default class SWNCharGen extends React.Component<ISWNCharGenProps, ISWNCh
         this.onChangeAttributeMethod = this.onChangeAttributeMethod.bind(this);
         this.onRollForAttributes = this.onRollForAttributes.bind(this);
         this.onSetAttributeTo14 = this.onSetAttributeTo14.bind(this);
+        this.onSetAttribute = this.onSetAttribute.bind(this);
     }
 
     private getRandom(die: number): number {

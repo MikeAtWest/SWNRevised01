@@ -12,7 +12,7 @@ export const CharSheet = (props: ICharSheetProps) => {
     return (
         <div className="charSheet">
             <h2>Character Sheet:</h2>
-            <div><span>Name: </span>{props.char.name}</div>
+            <div><span><b>Name:</b> </span>{props.char.name}</div>
 
             <AttributeList attributes={props.char.attributes} />
 
