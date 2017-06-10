@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Character, ICharacter } from "./classes/Character";
 
+import { BackgroundPick } from "./BackgroundPick";
 import { PickFromArray } from "./PickFromArray";
 import { RandomRoll } from "./RandomRoll";
 
@@ -11,6 +12,8 @@ export interface ICharDesignProps {
     onRollForAttributes: (event: any) => any;
     onSetAttributeTo14: (event: any) => any;
     onSetAttribute: (event: any) => any;
+    onSetBackground: (event: any) => any;    
+    onChangeBackgroundMethod: (event: any) => any;  
 }
 
 export const CharDesign = (props: ICharDesignProps) => {
@@ -39,6 +42,9 @@ export const CharDesign = (props: ICharDesignProps) => {
                     onSetAttribute={props.onSetAttribute}
                 />
             }
+
+            <BackgroundPick char={props.char} onSetBackground={props.onSetBackground} onChangeBackgroundMethod={props.onChangeBackgroundMethod} />
+
         </div>
     );
 };

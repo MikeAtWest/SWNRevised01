@@ -1,7 +1,9 @@
 import * as React from "react";
 import "./styles/char.css";
 
+import { Background, BackgroundList, IBackground, } from "./classes/Background";
 import { Character, ICharacter } from "./classes/Character";
+import { ISkill, Skill } from "./classes/Skill";
 
 import { CharDesign } from "./CharDesign";
 import { CharSheet } from "./CharSheet";
@@ -78,10 +80,54 @@ export default class SWNCharGen extends React.Component<ISWNCharGenProps, ISWNCh
         this.setState({ char });
     }
 
+    public onSetBackground(e): void {
+        const name = e.target.value;
+
+        const bgs = BackgroundList();
+        const bg = bgs.filter(b => b.name === name)[0];
+
+        const char = this.state.char;
+        char.background = bg;
+        char.backgroundMethod = "";
+        char.skills = [];
+        this.setState({ char });
+    }
+
+    public onChangeBackgroundMethod(e): void {
+        const backgroundMethod = e.target.value;
+        const char = this.state.char;
+        char.backgroundMethod = backgroundMethod;
+
+        if (backgroundMethod === "quickskills") {
+            // Remove any old background skills.
+            char.skills = char.skills.slice(0).filter((s) => { s.source !== "background" });
+
+            // Add free skill from background.
+           char.addSkillLevels(char.background.freeSkill, 1, "background");
+            
+            // Add quick skills for the background.
+            for( const skill of char.background.quickSkills) {
+                char.addSkillLevels(skill, 1, "background");
+            }
+        }
+
+        if (backgroundMethod === "picktwoskills") {
+            // Remove any old background skills.
+            char.skills = char.skills.slice(0).filter((s) => { s.source !== "background" });
+
+            // Add free skill from background.
+           char.addSkillLevels(char.background.freeSkill, 1, "background");
+        }
+
+        char.skills.sort( (s1, s2) => s1.name < s2.name ? -1 : 1 );
+  
+        this.setState({ char });
+    }
+
     public render() {
         return (
             <div>
-                <h1>VAGABOND : SWN Revised 0.8 - Character Generator</h1>
+                <h1>FREEBOOTER : SWN Revised 0.8 - Character Generator (v1)</h1>
 
                 <CharDesign
                     char={this.state.char}
@@ -90,6 +136,8 @@ export default class SWNCharGen extends React.Component<ISWNCharGenProps, ISWNCh
                     onRollForAttributes={this.onRollForAttributes}
                     onSetAttributeTo14={this.onSetAttributeTo14}
                     onSetAttribute={this.onSetAttribute}
+                    onSetBackground={this.onSetBackground}
+                    onChangeBackgroundMethod={this.onChangeBackgroundMethod}
                 />
 
                 <CharSheet char={this.state.char} />
@@ -105,6 +153,8 @@ export default class SWNCharGen extends React.Component<ISWNCharGenProps, ISWNCh
         this.onRollForAttributes = this.onRollForAttributes.bind(this);
         this.onSetAttributeTo14 = this.onSetAttributeTo14.bind(this);
         this.onSetAttribute = this.onSetAttribute.bind(this);
+        this.onSetBackground = this.onSetBackground.bind(this);
+        this.onChangeBackgroundMethod = this.onChangeBackgroundMethod.bind(this);
     }
 
     private getRandom(die: number): number {

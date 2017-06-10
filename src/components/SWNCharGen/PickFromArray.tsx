@@ -12,6 +12,7 @@ export interface IPickFromArrayState {
     x: number[];
 }
 
+// TODO: Make stateless function.
 export class PickFromArray extends React.Component<IPickFromArrayProps, IPickFromArrayState> {
 
     private optionsToAssign = [14, 12, 11, 10, 9, 7];

@@ -13,8 +13,8 @@ export const CharSheet = (props: ICharSheetProps) => {
         <div className="charSheet">
             <h2>Character Sheet:</h2>
             <div><span><b>Name:</b> </span>{props.char.name}</div>
-
             <AttributeList attributes={props.char.attributes} />
+            <div><span><b>Background:</b> </span>{props.char.background.name}</div>
 
         </div>
     );
