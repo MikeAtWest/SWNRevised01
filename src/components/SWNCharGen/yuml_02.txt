@@ -1,0 +1,12 @@
+(Strength)->(Ready Items & Stowed Items)
+(Cash or Equipment Pack)->(Encumberance)
+(Ready Items & Stowed Items)->(Encumberance)
+(Encumberance)->(Movement)
+
+(Level One)->(Additional Levels)
+(Additional Levels)->(Hit Points)
+(Additional Levels)->(Attack Bonus)
+(Additional Levels)->(Saves)
+(Additional Levels)->(Saves)
+(Additional Levels)->(Skill Points)
+(Additional Levels)->(Foci)

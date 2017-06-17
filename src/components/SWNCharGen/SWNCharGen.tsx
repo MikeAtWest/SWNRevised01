@@ -127,7 +127,7 @@ export default class SWNCharGen extends React.Component<ISWNCharGenProps, ISWNCh
     public render() {
         return (
             <div>
-                <h1>FREEBOOTER : SWN Revised 0.8 - Character Generator (v1)</h1>
+                <h1>FREEBOOTER (v1) : Character Generator for Stars Without Number Revised (0.8) </h1>
 
                 <CharDesign
                     char={this.state.char}
